@@ -33,7 +33,7 @@ export extern "make" [
 	--help(-h)                                        # Print this message and exit.
 	--ignore-errors(-i)                               # Ignore errors from recipes.
 	--include-dir(-I): string@"nu-complete make dirs" # Search DIRECTORY for included makefiles.
-	--jobs(-j): int@"nu-complete make jobs"           # Allow N jobs at once; infinite jobs with no arg.
+	--jobs(-j): int@"nu-complete make jobs"           # Allow N jobs at once: infinite jobs with no arg.
 	--keep-going(-k)                                  # Keep going when some targets can't be made.
 	--load-average(-l): int@"nu-complete make jobs"   # Don't start multiple jobs unless load is below N.
 	--check-symlink-times(-L)                         # Use the latest mtime between symlinks and target.
