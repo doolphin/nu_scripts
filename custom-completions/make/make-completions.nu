@@ -10,9 +10,9 @@ def "nu-complete make" [] {
 	| str trim
 }
 
-def "nu-complete make jobs" [] {
-	seq 1 (sys cpu | length)
-}
+# def "nu-complete make jobs" [] {
+# 	seq 1 (sys cpu | length)
+# }
 
 def "nu-complete make files" [] {
 	ls **/* | where type == file | get name
