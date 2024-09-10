@@ -4,6 +4,9 @@
 > the following procedure is the same for `nu-ansi-term` and `reedline` and needs to be repeated
 
 > **Warning**
+> we usually can't include an update to `nu-ansi-term` unless `lscolors` has already updated to the newer version. if there's a major update to `nu-ansi-term` it needs to be done well beforehand. if not, don't bump it for Nushell
+
+> **Warning**
 > release `nu-ansi-term` **before** `reedline` and `reedline` **before** Nushell
 
 > **Note**
@@ -56,9 +59,11 @@
 ## 3. Publish `nu` to *crates.io*
 - [ ] check the order of dependencies with `nushell/nu_scripts/make_release/nu_deps.nu` from the `nushell` repo
 - [ ] release the Nushell crates `nushell/nu_scripts/make_release/nu_release.nu` from the `nushell` repo
+- [ ] **Important!** add any new crates to the `github:nushell:publishing` group on crates.io: `cargo owner --add github:nushell:publishing -p <crate>`
 
 > **Note**
 > if there is a new crate, you must add it to the `github:nushell:publishing` group (`cargo owner --list`)
+> this will make things very difficult for us next time if you don't, as we won't be able to release new versions of any dependent crates either
 
 > **Note**
 > if a step fails
@@ -72,7 +77,7 @@
 
 - [ ] inspect the merged PRs to write changelogs with `./make_release/release-note/list-merged-prs nushell/nushell`
 - [ ] reorder sections by priority, what makes the most sense to the user?
-- [ ] paste the output of  `./make_release/release-note/list-merged-prs nushell/nushell --label breaking-change --pretty --no-author` to the "*Breaking changes*" section
+- [ ] paste the output of `./make_release/release-note/list-merged-prs nushell/nushell --label pr:breaking-change --pretty --no-author` to the "*Breaking changes*" section
 - [ ] make sure breaking changes titles are clear enough
 - [ ] paste the output of `./make_release/release-note/get-full-changelog` to the "*Full changelog*" section
 - [ ] mark as *ready for review* when uploading to *crates.io*
